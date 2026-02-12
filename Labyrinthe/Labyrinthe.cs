@@ -2,7 +2,16 @@
 {
     internal class Labyrinthe
     {
-        public char[,] Map { get; set; } = new char[,]
+        public int PosX { get; set; } 
+        public int PosY { get; set; }
+        
+        public Labyrinthe(int posX, int posY)
+        {
+            this.PosX = posX;
+            this.PosY = posY;
+        }
+
+        private char[,] Map { get; set; } = new char[,]
         {
             { '█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█' },
             { '█',' ',' ',' ','█',' ',' ',' ',' ',' ','█',' ',' ',' ',' ',' ','█',' ',' ','█' },
@@ -26,6 +35,41 @@
             { '█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█' }
         };
 
-
+        public void MoveUp()
+        {
+            if (Map[PosY-1,PosX] != '█')
+                PosY--;
+        }
+                   
+        public void MoveDown()
+        {
+            if (Map[PosY + 1, PosX] != '█')
+                PosY++;                      
+        }
+        public void MoveLeft()
+        {
+            if (Map[PosY, PosX -1] != '█')
+                PosX --;
+        }
+        public void MoveRight()
+        {
+            if (Map[PosY, PosX + 1] != '█')
+                PosX++;
+        }
+        public bool IsExit()
+        {
+            for (int i = 0; i < Map.Length; i++)
+            {
+                for (int j = 0; j < Map.Length; j++)
+                {
+                    bool peutSortir = true;
+                    char espace = ' ';
+                    if (espace == ' ' || espace == '█')
+                       return peutSortir = false;
+                    else
+                        return peutSortir;
+                }
+            }
+        }
     }
 }

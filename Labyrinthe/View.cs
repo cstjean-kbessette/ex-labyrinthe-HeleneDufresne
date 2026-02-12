@@ -2,7 +2,14 @@
 {
     internal class View
     {
-        
+
+        public void AfficherLabyrinthe(Labyrinthe labyrinthe)
+        {
+            int PosJoueurX = 1;
+            int PosJoueurY = 1;
+            char positionJoueur = 'P';
+            
+        }
         public void AfficherEntete()
         {
             Console.Clear();
