@@ -7,9 +7,9 @@ namespace Labyrinthe
 
         public void AfficherLabyrinthe(Labyrinthe labyrinthe)
         {
-            for (int y = 0; y < labyrinthe.Hauteur(); y++)
+            for (int y = 0; y < labyrinthe.Map.GetLength(0); y++)
             {
-                for (int x = 0; x < labyrinthe.Largeur(); x++)
+                for (int x = 0; x < labyrinthe.Map.GetLength(1); x++)
                 {
                     if (labyrinthe.PosJoueur(x,y))
                         Console.Write('P');

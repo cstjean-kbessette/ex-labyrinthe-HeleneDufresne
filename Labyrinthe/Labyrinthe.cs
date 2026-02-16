@@ -4,9 +4,9 @@ namespace Labyrinthe
 {
     internal class Labyrinthe
     {
-        private int PosX { get; set; } 
-        private int PosY { get; set; }
-        private char[,] Map { get; set; } = new char[,]
+        public int PosX { get; private set; } 
+        public int PosY { get; private set; }
+        public char[,] Map { get; private set; } = new char[,]
         {
             { '█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█' },
             { '█',' ',' ',' ','█',' ',' ',' ',' ',' ','█',' ',' ',' ',' ',' ','█',' ',' ','█' },
@@ -33,13 +33,6 @@ namespace Labyrinthe
         {
             PosX = posX;
             PosY = posY;
-        }
-        public int Hauteur() 
-        { 
-            return Map.GetLength(1); 
-        }
-        public int Largeur() { 
-            return Map.GetLength(0); 
         }
         public char Carte(int x, int y)
         { 
