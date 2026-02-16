@@ -1,15 +1,25 @@
-﻿namespace Labyrinthe
+﻿using System.Collections.Generic;
+
+namespace Labyrinthe
 {
     internal class View
     {
 
         public void AfficherLabyrinthe(Labyrinthe labyrinthe)
         {
-            int PosJoueurX = 1;
-            int PosJoueurY = 1;
-            char positionJoueur = 'P';
-            
+            for (int y = 0; y < labyrinthe.Hauteur(); y++)
+            {
+                for (int x = 0; x < labyrinthe.Largeur(); x++)
+                {
+                    if (labyrinthe.PosJoueur(x,y))
+                        Console.Write('P');
+                    else
+                        Console.Write(labyrinthe.Carte(x, y));
+                }
+                Console.WriteLine();
+            }
         }
+
         public void AfficherEntete()
         {
             Console.Clear();

@@ -1,16 +1,11 @@
-﻿namespace Labyrinthe
+﻿using System.Data;
+
+namespace Labyrinthe
 {
     internal class Labyrinthe
     {
-        public int PosX { get; set; } 
-        public int PosY { get; set; }
-        
-        public Labyrinthe(int posX, int posY)
-        {
-            this.PosX = posX;
-            this.PosY = posY;
-        }
-
+        private int PosX { get; set; } 
+        private int PosY { get; set; }
         private char[,] Map { get; set; } = new char[,]
         {
             { '█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█' },
@@ -34,6 +29,22 @@
             { '█','█','█','█',' ','█','█','█',' ','█','█','█','█','█',' ','█','█','█',' ','█' },
             { '█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█' }
         };
+        public Labyrinthe(int posX, int posY)
+        {
+            PosX = posX;
+            PosY = posY;
+        }
+        public int Hauteur() 
+        { 
+            return Map.GetLength(1); 
+        }
+        public int Largeur() { 
+            return Map.GetLength(0); 
+        }
+        public char Carte(int x, int y)
+        { 
+            return Map[y,x];
+        }
 
         public void MoveUp()
         {
@@ -56,20 +67,13 @@
             if (Map[PosY, PosX + 1] != '█')
                 PosX++;
         }
+        public bool PosJoueur(int x, int y)
+        {
+            return x == PosX && y == PosY;
+        }
         public bool IsExit()
         {
-            for (int i = 0; i < Map.Length; i++)
-            {
-                for (int j = 0; j < Map.Length; j++)
-                {
-                    bool peutSortir = true;
-                    char espace = ' ';
-                    if (espace == ' ' || espace == '█')
-                       return peutSortir = false;
-                    else
-                        return peutSortir;
-                }
-            }
+            return Map[PosY, PosX] == 'E';
         }
     }
 }

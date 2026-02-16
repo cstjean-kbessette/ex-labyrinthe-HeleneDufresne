@@ -4,36 +4,47 @@ namespace Labyrinthe
 {
     internal class Controller
     {
-        private Labyrinthe labirynthe;
+        private Labyrinthe labyrinthe;
         private View view;
-        public Controler(Labyrinthe labirynthe, View view)
+        public Controller(Labyrinthe labyrinthe, View view)
         {
             this.view = view;
-            this.labirynthe = labirynthe;
+            this.labyrinthe = labyrinthe;
         }
-
 
         public void Run()
         {
-            
+            view.AfficherEntete();
+            Console.ReadKey();
             while (true)
             {
-                view.AfficherEntete();
+                Console.Clear();
+                view.AfficherLabyrinthe(labyrinthe);
+                
+                if (labyrinthe.IsExit())
+                {
+                    view.AfficherVictoire();
+                    break;
+                }
+
                 ConsoleKeyInfo cki = Console.ReadKey(true);
                 char choix = cki.KeyChar;
                 switch (choix)
                 {
-                    case '1':
-
+                    case 'w':
+                        labyrinthe.MoveUp();
                       break;
-                    case '2':
-
+                    case 's':
+                        labyrinthe.MoveDown();
                         break;
-                    case '3':
-
+                    case 'a':
+                        labyrinthe.MoveLeft();
                         break;
-                    case '4':
-
+                    case 'd':
+                        labyrinthe.MoveRight();
+                        break;
+                    default:
+                        Console.WriteLine("Choix invalide");
                         break;
                 }
             }
