@@ -43,8 +43,7 @@ namespace Labyrinthe
         {
             if (Map[PosY-1,PosX] != '█')
                 PosY--;
-        }
-                   
+        }                   
         public void MoveDown()
         {
             if (Map[PosY + 1, PosX] != '█')
