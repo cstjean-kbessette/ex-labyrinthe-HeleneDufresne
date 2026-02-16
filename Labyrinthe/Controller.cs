@@ -11,7 +11,6 @@ namespace Labyrinthe
             this.view = view;
             this.labyrinthe = labyrinthe;
         }
-
         public void Run()
         {
             view.AfficherEntete();

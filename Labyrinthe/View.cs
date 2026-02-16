@@ -4,7 +4,6 @@ namespace Labyrinthe
 {
     internal class View
     {
-
         public void AfficherLabyrinthe(Labyrinthe labyrinthe)
         {
             for (int y = 0; y < labyrinthe.Map.GetLength(0); y++)
