@@ -1,8 +1,12 @@
-﻿namespace Labyrinthe
+﻿using System.Data;
+
+namespace Labyrinthe
 {
     internal class Labyrinthe
     {
-        public char[,] Map { get; set; } = new char[,]
+        public int PosX { get; private set; } //= 1;
+        public int PosY { get; private set; } // = 1;
+        public char[,] Map { get; private set; } = new char[,]
         {
             { '█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█' },
             { '█',' ',' ',' ','█',' ',' ',' ',' ',' ','█',' ',' ',' ',' ',' ','█',' ',' ','█' },
@@ -25,7 +29,43 @@
             { '█','█','█','█',' ','█','█','█',' ','█','█','█','█','█',' ','█','█','█',' ','█' },
             { '█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█' }
         };
+        public Labyrinthe(int posX, int posY) // si on initialise au début (voir haut de page), pas besoin de l'écrire
+        {
+            PosX = posX;
+            PosY = posY;
+        }
+        public char Carte(int x, int y)
+        { 
+            return Map[y,x];
+        }
 
-
+        public void MoveUp()
+        {
+            if (Map[PosY-1,PosX] != '█')
+                PosY--;
+        }                   
+        public void MoveDown()
+        {
+            if (Map[PosY + 1, PosX] != '█')
+                PosY++;                      
+        }
+        public void MoveLeft()
+        {
+            if (Map[PosY, PosX -1] != '█')
+                PosX --;
+        }
+        public void MoveRight()
+        {
+            if (Map[PosY, PosX + 1] != '█')
+                PosX++;
+        }
+        public bool PosJoueur(int x, int y) // pas obligatoire
+        {
+            return x == PosX && y == PosY;
+        }
+        public bool IsExit()
+        {
+            return Map[PosY, PosX] == 'E';
+        }
     }
 }
