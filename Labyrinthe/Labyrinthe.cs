@@ -4,8 +4,8 @@ namespace Labyrinthe
 {
     internal class Labyrinthe
     {
-        public int PosX { get; private set; } 
-        public int PosY { get; private set; }
+        public int PosX { get; private set; } //= 1;
+        public int PosY { get; private set; } // = 1;
         public char[,] Map { get; private set; } = new char[,]
         {
             { '█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█' },
@@ -29,7 +29,7 @@ namespace Labyrinthe
             { '█','█','█','█',' ','█','█','█',' ','█','█','█','█','█',' ','█','█','█',' ','█' },
             { '█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█','█' }
         };
-        public Labyrinthe(int posX, int posY)
+        public Labyrinthe(int posX, int posY) // si on initialise au début (voir haut de page), pas besoin de l'écrire
         {
             PosX = posX;
             PosY = posY;
@@ -59,7 +59,7 @@ namespace Labyrinthe
             if (Map[PosY, PosX + 1] != '█')
                 PosX++;
         }
-        public bool PosJoueur(int x, int y)
+        public bool PosJoueur(int x, int y) // pas obligatoire
         {
             return x == PosX && y == PosY;
         }

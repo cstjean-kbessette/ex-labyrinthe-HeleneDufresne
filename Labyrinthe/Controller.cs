@@ -15,7 +15,7 @@ namespace Labyrinthe
         {
             view.AfficherEntete();
             Console.ReadKey();
-            while (true)
+            while (true) // (!labyrinthe.IsExit())  => Une seconde possibilité de sortie de ma boucle
             {
                 Console.Clear();
                 view.AfficherLabyrinthe(labyrinthe);
@@ -26,20 +26,20 @@ namespace Labyrinthe
                     break;
                 }
 
-                ConsoleKeyInfo cki = Console.ReadKey(true);
+                ConsoleKeyInfo cki = Console.ReadKey(true); // ConsoleKey key = Console.Key().Key;
                 char choix = cki.KeyChar;
-                switch (choix)
+                switch (choix) // switch(key)
                 {
-                    case 'w':
+                    case 'w': //ConsoleKey.UpArrow;
                         labyrinthe.MoveUp();
                       break;
-                    case 's':
+                    case 's': //ConsoleKey.DownArrow;
                         labyrinthe.MoveDown();
                         break;
-                    case 'a':
+                    case 'a': //ConsoleKey.LeftArrow;
                         labyrinthe.MoveLeft();
                         break;
-                    case 'd':
+                    case 'd': //ConsoleKey.RightArrow;
                         labyrinthe.MoveRight();
                         break;
                     default:
@@ -47,6 +47,7 @@ namespace Labyrinthe
                         break;
                 }
             }
+            // view.AfficherVictoire(); (une seconde possibilité)
         }
     }
 }
